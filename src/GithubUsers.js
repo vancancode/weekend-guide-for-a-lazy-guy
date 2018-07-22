@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Card = props => {
   return (
-		<div className="table" style={{ width: '50%', marginLeft: '15px'}}>
+    <div className="table" style={{ width: '50%', marginLeft: '15px' }}>
       <div className="card flex-row flex-wrap">
         <img
           style={{
@@ -13,12 +13,11 @@ const Card = props => {
             height: '25%'
           }}
           src={props.avatar_url}
+          alt=""
         />
         <div class="card-block px-2">
           <h4 className="card-title">{props.name}</h4>
-          <pre className="card-text">
-            {props.company}
-          </pre>
+          <pre className="card-text">{props.company}</pre>
         </div>
       </div>
     </div>
@@ -42,9 +41,9 @@ class Form extends React.Component {
   };
   render() {
     return (
-      <form className="header"
+      <form
+        className="header input-group"
         onSubmit={this.handleSubmit}
-        className="input-group"
         style={{ width: '50%', padding: '20px' }}
       >
         <input
