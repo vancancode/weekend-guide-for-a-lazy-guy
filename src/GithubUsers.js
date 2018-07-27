@@ -4,7 +4,10 @@ import axios from 'axios';
 
 const Card = props => {
   return (
-    <div className="table" style={{ width: '50%', marginLeft: '15px' }}>
+    <div
+      className="table"
+      style={{ width: '100%', paddingLeft: '8%', paddingRight: '8%' }}
+    >
       <div className="card flex-row flex-wrap">
         <img
           style={{
@@ -15,7 +18,7 @@ const Card = props => {
           src={props.avatar_url}
           alt=""
         />
-        <div class="card-block px-2">
+        <div className="card-block">
           <h4 className="card-title">{props.name}</h4>
           <pre className="card-text">{props.company}</pre>
         </div>
@@ -32,6 +35,7 @@ class Form extends React.Component {
   state = { userName: '' };
   handleSubmit = event => {
     event.preventDefault();
+
     axios
       .get(`https://api.github.com/users/${this.state.userName}`)
       .then(resp => {
@@ -44,7 +48,12 @@ class Form extends React.Component {
       <form
         className="header input-group"
         onSubmit={this.handleSubmit}
-        style={{ width: '50%', padding: '20px' }}
+        style={{
+          width: '100%',
+          paddingLeft: '8%',
+          paddingRight: '8%',
+          marginBottom: '2%'
+        }}
       >
         <input
           type="text"
@@ -53,7 +62,7 @@ class Form extends React.Component {
           onChange={event => this.setState({ userName: event.target.value })}
           placeholder="Github username"
         />
-        <div class="input-group-append" style={{ paddingLeft: '10px' }}>
+        <div className="input-group-append" style={{ paddingLeft: '10px' }}>
           <button type="submit" className="btn btn-primary">
             Add card
           </button>
