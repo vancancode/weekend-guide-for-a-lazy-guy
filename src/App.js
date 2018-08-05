@@ -10,7 +10,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faRetweet } from '@fortawesome/free-solid-svg-icons';
 import GithubUsers from './components/github-users/GithubUsers';
 import Playnine from './components/play-nine/Playnine';
-import Game from './components/tic-tac-toe/Game'
+import Game from './components/tic-tac-toe/Game';
 
 library.add(faStroopwafel);
 library.add(faStar);
@@ -31,10 +31,13 @@ class App extends Component {
         <br />
         <Playnine />
         <div className="Github-users">
-        <Game />
-        <GithubUsers />
+          <div className="Tic-tac-toe">
+            <Game />
+          </div>
+          <div className="Users">
+            <GithubUsers />
+          </div>
         </div>
-
       </div>
     );
   }

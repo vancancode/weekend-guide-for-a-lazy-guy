@@ -17,6 +17,26 @@ class Game extends React.Component {
     };
   }
 
+  restartGame(winner) {
+    if (winner) {
+      this.reset();
+    } else {
+      alert('Sorry, You cannot restart an ongoing game');
+    }
+  }
+
+  reset() {
+    this.setState({
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true
+    });
+  }
+
   handleClick(i) {
     // const history = this.state.history;
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -60,12 +80,23 @@ class Game extends React.Component {
       );
     });
 
-    let status, banner;
+    let status, banner, draw;
     if (winner) {
       status = 'Winner: ' + winner;
       banner = <div className="game-won">{winner} WON!!!</div>;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
+    if (!winner && moves.length > 9) {
+      draw = (
+        <div
+          className="btn btn-primary game-status game-won"
+          onClick={() => this.reset()}
+        >
+          Draw, would you like to restart?
+        </div>
+      );
     }
 
     return (
@@ -74,9 +105,15 @@ class Game extends React.Component {
           <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
-          <div className="btn btn-primary game-status">{status}</div>
+          <div
+            className="btn btn-primary game-status"
+            onClick={() => this.restartGame(winner)}
+          >
+            {status}
+          </div>
           <ol>{moves}</ol>
           {banner}
+          {draw}
         </div>
       </div>
     );

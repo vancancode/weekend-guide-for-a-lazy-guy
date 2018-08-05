@@ -27,9 +27,14 @@
   flex-direction: row;
 }
 
+.Users {
+  width: 100%;
+  align-items: center;
+}
+
 .Tic-tac-toe {
-  width: 50%;
-  float: left;
+  width: 100%;
+  align-items: center;
 }
 
 @keyframes App-logo-spin {
